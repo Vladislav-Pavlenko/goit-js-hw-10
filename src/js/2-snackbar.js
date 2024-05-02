@@ -9,33 +9,33 @@ function onFormSubmit(event) {
   event.preventDefault();
   const isSuccess = fullfilledEl.checked ? true : false;
   const promice = new Promise((resolve, reject) => {
-    if (isSuccess) {
-      resolve(console.log(`✅ Fulfilled promise in ${inputEL.value}ms`));
-    } else {
-      reject(console.log(`❌ Rejected promise in ${inputEL.value}ms`));
-    }
+    setTimeout(() => {
+      if (isSuccess) {
+        resolve(inputEL.value);
+      } else {
+        reject(inputEL.value);
+      }
+    }, inputEL.value);
   });
 
-  setTimeout(() => {
-    promice
-      .then(() => {
-        iziToast.show({
-          title: '✅',
-          message: ` Fulfilled promise in ${inputEL.value}ms`,
-          backgroundColor: 'green',
-          color: 'white',
-          position: 'topRight',
-        });
-      })
-      .catch(() => {
-        iziToast.show({
-          title: '❌',
-          message: ` Rejected promise in ${inputEL.value}ms`,
-          backgroundColor: 'white',
-          color: 'white',
-          position: 'topRight',
-        });
+  promice
+    .then(delay => {
+      iziToast.show({
+        title: '✅',
+        message: ` Fulfilled promise in ${delay}ms`,
+        backgroundColor: 'green',
+        color: 'white',
+        position: 'topRight',
       });
-  }, inputEL.value);
+    })
+    .catch(delay => {
+      iziToast.show({
+        title: '🚫',
+        message: ` Rejected promise in ${delay}ms`,
+        backgroundColor: 'red',
+        color: 'white',
+        position: 'topRight',
+      });
+    });
 }
 formEl.addEventListener('submit', onFormSubmit);
