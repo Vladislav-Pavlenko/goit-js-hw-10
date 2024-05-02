@@ -141,3 +141,44 @@
   letter-spacing: 0%;
   text-align: left;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  padding: 10px;
+  max-width: 360px;
+  max-height: 40px;
+  border-radius: 8px;
+}
+
+fieldset {
+  display: flex;
+  max-width: 340px;
+  gap: 54px;
+  justify-content: center;
+}
+
+fieldset label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.form > button {
+  padding: 8px 16px;
+  max-width: 360px;
+  border-radius: 8px;
+  border: none;
+  color: #ffffff;
+
+  background: rgb(78, 117, 255);
+}
